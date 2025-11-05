@@ -273,6 +273,61 @@
       </nav>
       <p>Copyright &#169; 2025 Ramkumar. All Rights Reserved.</p>
     </footer>
+    <!-- Floating WhatsApp Icon -->
+<a id="wa-floating" 
+   href="https://wa.me/6303358867?text=Hi%20Ramkumar%2C%20I%27m%20interested%20in%20your%20Data%20Analysis%20service." 
+   target="_blank" 
+   rel="noopener noreferrer">
+  <img src="./assets/whatsapp-icon.png" alt="WhatsApp" id="wa-icon">
+</a>
+
+/*<!-- JavaScript for drag functionality -->*
+<script>
+const waIcon = document.getElementById('wa-floating');
+
+let isDragging = false;
+let offsetX, offsetY;
+
+waIcon.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  offsetX = e.clientX - waIcon.getBoundingClientRect().left;
+  offsetY = e.clientY - waIcon.getBoundingClientRect().top;
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  waIcon.style.left = `${e.clientX - offsetX}px`;
+  waIcon.style.top = `${e.clientY - offsetY}px`;
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+</script>
+
+<!-- CSS Styling -->
+<style>
+#wa-floating {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  cursor: move;
+  z-index: 9999;
+  transition: transform 0.2s ease;
+}
+#wa-floating:hover {
+  transform: scale(1.1);
+}
+#wa-floating img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+</style>
+
     <script src="script.js"></script>
   </body>
 </html>
