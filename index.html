@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rk</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-  </head>
+ <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Rk | Data Analytics Portfolio</title>
+
+  <!-- Favicon - change path if your file is somewhere else -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/logo.png">
+  <link rel="shortcut icon" href="./assets/logo.png">
+
+  <!-- optional: force reload when you change file (bump ?v=1 to ?v=2 when updating) -->
+  <!-- <link rel="icon" href="./assets/logo.png?v=1"> -->
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mediaqueries.css" />
+</head>
+
   <body>
     <nav id="desktop-nav">
       <div class="logo">Ramkumar P</div>
@@ -279,56 +291,7 @@
    target="_blank" 
    rel="noopener noreferrer">
   <img src="./assets/whatsapp-icon.png" alt="WhatsApp" id="wa-icon">
-  <h6>💬 Discuss on WhatsApp</h6>
 </a>
-
-/*<!-- JavaScript for drag functionality -->*
-<script>
-const waIcon = document.getElementById('wa-floating');
-
-let isDragging = false;
-let offsetX, offsetY;
-
-waIcon.addEventListener('mousedown', (e) => {
-  isDragging = true;
-  offsetX = e.clientX - waIcon.getBoundingClientRect().left;
-  offsetY = e.clientY - waIcon.getBoundingClientRect().top;
-});
-
-document.addEventListener('mousemove', (e) => {
-  if (!isDragging) return;
-  waIcon.style.left = `${e.clientX - offsetX}px`;
-  waIcon.style.top = `${e.clientY - offsetY}px`;
-});
-
-document.addEventListener('mouseup', () => {
-  isDragging = false;
-});
-</script>
-
-<!-- CSS Styling -->
-<style>
-#wa-floating {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  cursor: move;
-  z-index: 9999;
-  transition: transform 0.2s ease;
-}
-#wa-floating:hover {
-  transform: scale(1.1);
-}
-#wa-floating img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-</style>
-
     <script src="script.js"></script>
   </body>
 </html>
