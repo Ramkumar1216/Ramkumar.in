@@ -60,8 +60,12 @@ a:hover {
 
 .logo {
   font-size: 2rem;
+  font-weight: bold;
+  
 }
-
+.k {
+  color: rgb(174, 3, 3);
+}
 .logo:hover {
   cursor: default;
 }
