@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: ramkumar-in
+    env: docker
+    plan: starter
+    branch: main
+    dockerfilePath: Dockerfile
+    autoDeploy: true
+    startCommand: gunicorn --bind 0.0.0.0:$PORT wsgi:application
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: ENVIRONMENT
+        value: production
+      - key: ALLOWED_HOSTS
+        value: "*"

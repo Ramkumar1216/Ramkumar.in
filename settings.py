@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from urllib.parse import urlparse
 from decouple import config, Csv
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -70,11 +71,24 @@ TEMPLATES = [
 WSGI_APPLICATION = 'wsgi.application'
 
 # Database Configuration
-DB_ENGINE = config('DB_ENGINE', default='', cast=str)
-if DB_ENGINE:
+DATABASE_URL = config('DATABASE_URL', default='')
+
+if DATABASE_URL:
+    url = urlparse(DATABASE_URL)
     DATABASES = {
         'default': {
-            'ENGINE': DB_ENGINE,
+            'ENGINE': 'django.db.backends.postgresql' if url.scheme.startswith('postgres') else 'django.db.backends.sqlite3',
+            'NAME': url.path[1:] if url.path else config('DB_NAME', default='portfolio_db'),
+            'USER': url.username or config('DB_USER', default='postgres'),
+            'PASSWORD': url.password or config('DB_PASSWORD', default=''),
+            'HOST': url.hostname or config('DB_HOST', default='db'),
+            'PORT': url.port or config('DB_PORT', default='5432'),
+        }
+    }
+elif config('DB_ENGINE', default='', cast=str):
+    DATABASES = {
+        'default': {
+            'ENGINE': config('DB_ENGINE', default='django.db.backends.postgresql'),
             'NAME': config('DB_NAME', default='portfolio_db'),
             'USER': config('DB_USER', default='postgres'),
             'PASSWORD': config('DB_PASSWORD', default=''),
