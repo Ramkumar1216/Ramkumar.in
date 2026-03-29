@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ramkumar - Data Analytics & Web Development{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .navbar-scroll {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .underline-animation {
+            position: relative;
+        }
+        
+        .underline-animation::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+        
+        .underline-animation:hover::after {
+            width: 100%;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="smooth-scroll">
+    <!-- Navbar -->
+    <nav class="navbar-scroll bg-gray-900 bg-opacity-80">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold gradient-bg bg-clip-text text-transparent">
+                <a href="{% url 'core:home' %}">Ramkumar</a>
+            </div>
+            
+            <div class="hidden md:flex space-x-6">
+                <a href="{% url 'core:home' %}" class="underline-animation text-gray-300 hover:text-white">Home</a>
+                <a href="{% url 'core:about' %}" class="underline-animation text-gray-300 hover:text-white">About</a>
+                <a href="{% url 'services:list' %}" class="underline-animation text-gray-300 hover:text-white">Services</a>
+                <a href="{% url 'projects:list' %}" class="underline-animation text-gray-300 hover:text-white">Projects</a>
+                <a href="{% url 'blog:list' %}" class="underline-animation text-gray-300 hover:text-white">Blog</a>
+                <a href="{% url 'contact:contact' %}" class="btn-primary text-white px-6 py-2 rounded-lg">Contact</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-gray-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 bg-opacity-95 px-4 py-4 border-t border-gray-700">
+            <a href="{% url 'core:home' %}" class="block py-2 text-gray-300 hover:text-white">Home</a>
+            <a href="{% url 'core:about' %}" class="block py-2 text-gray-300 hover:text-white">About</a>
+            <a href="{% url 'services:list' %}" class="block py-2 text-gray-300 hover:text-white">Services</a>
+            <a href="{% url 'projects:list' %}" class="block py-2 text-gray-300 hover:text-white">Projects</a>
+            <a href="{% url 'blog:list' %}" class="block py-2 text-gray-300 hover:text-white">Blog</a>
+            <a href="{% url 'contact:contact' %}" class="block py-2 text-gray-300 hover:text-white">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Main Content with padding for fixed navbar -->
+    <div class="pt-20">
+        {% if messages %}
+        <div class="max-w-6xl mx-auto px-4">
+            {% for message in messages %}
+            <div class="my-4 p-4 bg-green-500 bg-opacity-10 border border-green-500 rounded text-green-400">
+                {{ message }}
+                <button onclick="this.parentElement.style.display='none'" class="float-right">✕</button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 bg-opacity-50 border-t border-gray-700 mt-20">
+        <div class="max-w-6xl mx-auto px-4 py-12">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 gradient-bg bg-clip-text text-transparent">Ramkumar</h3>
+                    <p class="text-gray-400 text-sm">Data-Driven Growth Specialist helping businesses leverage data and technology.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="{% url 'core:home' %}" class="hover:text-white hover:underline">Home</a></li>
+                        <li><a href="{% url 'core:about' %}" class="hover:text-white hover:underline">About</a></li>
+                        <li><a href="{% url 'services:list' %}" class="hover:text-white hover:underline">Services</a></li>
+                        <li><a href="{% url 'projects:list' %}" class="hover:text-white hover:underline">Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Services</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="{% url 'services:detail' slug='data-analytics' %}" class="hover:text-white hover:underline">Data Analytics</a></li>
+                        <li><a href="{% url 'services:detail' slug='digital-marketing' %}" class="hover:text-white hover:underline">Digital Marketing</a></li>
+                        <li><a href="{% url 'services:detail' slug='web-development' %}" class="hover:text-white hover:underline">Web Development</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Connect</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="https://wa.me/919876543210" target="_blank" class="hover:text-white hover:underline">WhatsApp</a></li>
+                        <li><a href="https://linkedin.com" target="_blank" class="hover:text-white hover:underline">LinkedIn</a></li>
+                        <li><a href="https://github.com" target="_blank" class="hover:text-white hover:underline">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2024 Ramkumar. All rights reserved. | Built with Django & Tailwind CSS</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="scroll-top" class="fixed bottom-8 right-8 gradient-bg text-white p-3 rounded-full opacity-0 invisible transition-all duration-300">
+        ↑
+    </button>
+
+    <script>
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.getElementById('scroll-top');
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.remove('opacity-0', 'invisible');
+            } else {
+                scrollBtn.classList.add('opacity-0', 'invisible');
+            }
+        });
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

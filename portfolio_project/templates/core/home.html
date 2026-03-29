@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Ramkumar's Portfolio{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="max-w-6xl mx-auto px-4 py-20 min-h-screen flex items-center">
+    <div class="grid md:grid-cols-2 gap-12 items-center w-full">
+        <div class="animate-fade-in-up">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Turn Your Data Into <span class="gradient-bg bg-clip-text text-transparent">Decisions That Earn Money</span>
+            </h1>
+            <p class="text-xl text-gray-400 mb-8 leading-relaxed">
+                Help your business grow faster with data-driven strategies, intelligent automation, and results that matter. For small business owners, eCommerce sellers, and startups ready to grow smart.
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-4">
+                <a href="#contact" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold text-center">
+                    Schedule Free Strategy Call
+                </a>
+                <a href="{% url 'projects:list' %}" class="glass-morphism text-white px-8 py-3 rounded-lg font-semibold text-center hover:bg-gray-800">
+                    See How I Helped Others →
+                </a>
+            </div>
+            <!--
+            <div class="mt-12 flex flex-wrap gap-6">
+                <div>
+                    <p class="text-3xl font-bold gradient-bg bg-clip-text text-transparent">50+</p>
+                    <p class="text-gray-400">Projects Completed</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold gradient-bg bg-clip-text text-transparent">30+</p>
+                    <p class="text-gray-400">Happy Clients</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold gradient-bg bg-clip-text text-transparent">5+</p>
+                    <p class="text-gray-400">Years Experience</p>
+                </div>
+            </div>
+            -->
+        </div>
+        
+        <div class="relative hidden md:block">
+            <div class="glass-morphism rounded-2xl overflow-hidden card-hover">
+                <img src="/media/profile/profile.jpeg" alt="Ramkumar P" class="w-full h-96 object-cover">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Preview Section -->
+<section class="max-w-6xl mx-auto px-4 py-20">
+    <h2 class="text-4xl font-bold text-center mb-4">Three Ways I Help Your Business Grow</h2>
+    <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+        Most businesses waste 20-40% of revenue opportunities. I show you where they are and how to capture them.
+    </p>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+        {% for service in services %}
+        <div class="glass-morphism rounded-xl p-8 card-hover">
+            <div class="text-5xl mb-4">{{ service.icon }}</div>
+            <h3 class="text-2xl font-bold mb-3">{{ service.title }}</h3>
+            <p class="text-gray-400 mb-4">{{ service.description|truncatewords:20 }}</p>
+            <div class="mb-6">
+                <p class="text-3xl font-bold gradient-bg bg-clip-text text-transparent">{{ service.price }}</p>
+            </div>
+            <a href="https://wa.me/6303358867" target="_blank" class="btn-primary text-white px-6 py-2 rounded-lg font-semibold hover:scale-105 inline-block">
+                Inquire Now
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="text-center mt-12">
+        <a href="{% url 'services:list' %}" class="glass-morphism text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 inline-block">
+            View All Services →
+        </a>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section class="max-w-6xl mx-auto px-4 py-20 bg-gray-900 bg-opacity-30 rounded-2xl">
+    <h2 class="text-4xl font-bold text-center mb-4">Featured Projects</h2>
+    <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+        Real-world projects demonstrating data analytics, marketing strategies, and web solutions
+    </p>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+        {% for project in projects %}
+        <a href="{% url 'projects:detail' project.slug %}" class="glass-morphism rounded-xl overflow-hidden card-hover group">
+            <div class="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 overflow-hidden">
+                {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                {% else %}
+                    <div class="w-full h-full flex items-center justify-center">
+                        <div class="text-6xl">📊</div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">{{ project.title }}</h3>
+                <p class="text-gray-400 mb-4">{{ project.description|truncatewords:15 }}</p>
+                <div class="flex flex-wrap gap-2">
+                    {% for tool in project.get_tools_list %}
+                    <span class="text-xs bg-gray-800 text-blue-400 px-3 py-1 rounded-full">{{ tool }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    
+    <div class="text-center mt-12">
+        <a href="{% url 'projects:list' %}" class="glass-morphism text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 inline-block">
+            View All Projects →
+        </a>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="max-w-6xl mx-auto px-4 py-20">
+    <h2 class="text-4xl font-bold text-center mb-4">Real Results From Real Clients</h2>
+    <p class="text-center text-gray-400 mb-12">See what happened when businesses stopped guessing and started deciding with data</p>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+        {% for testimonial in testimonials %}
+        <div class="glass-morphism rounded-xl p-8 card-hover">
+            <div class="flex items-center mb-4">
+                {% for i in "12345" %}
+                    {% if i <= testimonial.rating %}
+                    <span class="text-2xl text-yellow-400">★</span>
+                    {% else %}
+                    <span class="text-2xl text-gray-600">★</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <p class="text-gray-300 mb-6 italic">"{{ testimonial.feedback }}"</p>
+            <div class="border-t border-gray-700 pt-4">
+                <p class="font-semibold">{{ testimonial.name }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section id="contact" class="max-w-6xl mx-auto px-4 py-20">
+    <div class="glass-morphism rounded-2xl p-12 text-center gradient-border">
+        <h2 class="text-4xl font-bold mb-4">Stop Wasting Revenue. Start Growing Smart.</h2>
+        <p class="text-xl text-gray-400 mb-4 max-w-2xl mx-auto">
+            Book a free 20-minute strategy call. I'll analyze your specific situation and show you exactly where you can improve.
+        </p>
+        <p class="text-sm text-gray-500 mb-8">→ No charge, no sales pitch, just honest advice</p>
+        
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <a href="https://calendly.com/ramkumar" target="_blank" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold">
+                Schedule Free Strategy Call
+            </a>
+            <a href="https://wa.me/916303358867" target="_blank" class="glass-morphism text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800">
+                💬 Quick Chat on WhatsApp
+            </a>
+        </div>
+        
+        <p class="text-gray-500 text-sm mt-8">
+            📍 Coimbatore, India | 💼 Available for freelance projects & retainers
+        </p>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+
+{% block title %}Services - Ramkumar's Portfolio{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="max-w-6xl mx-auto px-4 py-20">
+    <div class="max-w-3xl">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            <span class="gradient-bg bg-clip-text text-transparent">Most Businesses Are Leaving 20-40% Revenue On The Table</span>
+        </h1>
+        <p class="text-xl text-gray-400 mb-4 leading-relaxed">
+            And they don't even know it. Messy data. Wasted marketing spend. Inefficient processes. Systems that don't scale.
+        </p>
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+            <strong>I help small business owners and eCommerce sellers unlock hidden revenue, fix broken systems, and build sustainable growth.</strong>
+        </p>
+        <p class="text-lg text-blue-400 font-semibold">
+            Here's how:
+        </p>
+    </div>
+</section>
+
+<!-- Services Grid -->
+<section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid md:grid-cols-3 gap-8">
+        {% for service in services %}
+        <div class="glass-morphism rounded-2xl p-8 card-hover flex flex-col">
+            {% if service.image %}
+            <img src="{{ service.image.url }}" alt="{{ service.title }}" class="w-full h-40 object-cover rounded-xl mb-4 shadow-lg">
+            {% endif %}
+            
+            <h3 class="text-3xl font-bold mb-4">{{ service.title }}</h3>
+            
+            <p class="text-gray-400 mb-6 flex-grow">{{ service.description }}</p>
+            
+            <div class="mb-6">
+                <p class="text-2xl font-bold gradient-bg bg-clip-text text-transparent">{{ service.price }}</p>
+                <p class="text-gray-400 text-sm">Starting price</p>
+            </div>
+            
+            <div class="mb-8">
+                <p class="font-semibold mb-4 text-white">What's Included:</p>
+                <ul class="space-y-2">
+                    {% for feature in service.get_features_list %}
+                    <li class="text-gray-300 flex items-start">
+                        <span class="text-blue-400 mr-3 mt-1">✓</span>
+                        <span>{{ feature }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <a href="https://wa.me/919876543210" target="_blank" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold text-center">
+                Get Started →
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="max-w-6xl mx-auto px-4 py-20">
+    <h2 class="text-4xl font-bold text-center mb-6">My Strategic Process</h2>
+    <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+        Every successful engagement follows a proven framework. This ensures clarity, accountability, and measurable results.
+    </p>
+    
+    <div class="grid md:grid-cols-4 gap-8">
+        <!-- Step 1 -->
+        <div class="text-center">
+            <div class="glass-morphism rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 border-2 border-blue-500">
+                <span class="text-4xl font-bold gradient-bg bg-clip-text text-transparent">1</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Strategic Discovery</h3>
+            <p class="text-gray-400 leading-relaxed">
+                I don't start with solutions. I start with deep questions. What's your current situation? What's costing you money? What does success look like? This clarity is crucial.
+            </p>
+            <p class="text-blue-400 text-sm font-semibold mt-4">→ Result: Clear roadmap</p>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="text-center">
+            <div class="glass-morphism rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 border-2 border-purple-500">
+                <span class="text-4xl font-bold gradient-bg bg-clip-text text-transparent">2</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Data-Driven Strategy</h3>
+            <p class="text-gray-400 leading-relaxed">
+                Based on your current data (or lack thereof), I build a strategy focused on ROI. We identify which improvements will have the biggest business impact.
+            </p>
+            <p class="text-purple-400 text-sm font-semibold mt-4">→ Result: Actionable plan</p>
+        </div>
+        
+        <!-- Step 3 -->
+        <div class="text-center">
+            <div class="glass-morphism rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 border-2 border-green-500">
+                <span class="text-4xl font-bold gradient-bg bg-clip-text text-transparent">3</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Execution & Transparency</h3>
+            <p class="text-gray-400 leading-relaxed">
+                I deliver high-quality work with weekly updates. You always know exactly what's happening, progress, and timelines. No surprises.
+            </p>
+            <p class="text-green-400 text-sm font-semibold mt-4">→ Result: Guaranteed delivery</p>
+        </div>
+        
+        <!-- Step 4 -->
+        <div class="text-center">
+            <div class="glass-morphism rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 border-2 border-yellow-500">
+                <span class="text-4xl font-bold gradient-bg bg-clip-text text-transparent">4</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Optimization & Growth</h3>
+            <p class="text-gray-400 leading-relaxed">
+                Results are just the beginning. I optimize based on data. Make your dashboards work harder. Improve your campaigns. Build momentum.
+            </p>
+            <p class="text-yellow-400 text-sm font-semibold mt-4">→ Result: Sustained growth</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="max-w-4xl mx-auto px-4 py-20">
+    <h2 class="text-4xl font-bold text-center mb-4">Questions You Probably Have</h2>
+    <p class="text-center text-gray-400 mb-12">Honest answers because you deserve clarity</p>
+    
+    <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <div class="glass-morphism rounded-xl p-6 border-l-4 border-blue-500">
+            <h3 class="font-bold mb-3 text-lg text-white">Which service should I choose?</h3>
+            <p class="text-gray-400 mb-4">
+                Depends on your biggest problem right now:
+            </p>
+            <ul class="text-gray-300 space-y-2 text-sm">
+                <li><strong>→ Data Analytics:</strong> If you have data but don't understand what's happening (eCommerce owners, service businesses)</li>
+                <li><strong>→ Digital Marketing Optimization:</strong> If you're spending on marketing but ROI is unclear</li>
+                <li><strong>→ Web Development:</strong> If you need a professional site that actually converts visitors</li>
+            </ul>
+            <p class="text-blue-400 text-sm font-semibold mt-4">
+                Unsure? Let's chat. I can recommend what will have the biggest impact on your revenue.
+            </p>
+        </div>
+        
+        <!-- FAQ 2 -->
+        <div class="glass-morphism rounded-xl p-6 border-l-4 border-purple-500">
+            <h3 class="font-bold mb-3 text-lg text-white">How long does it take to see results?</h3>
+            <p class="text-gray-400 mb-2">
+                Depends on the service:
+            </p>
+            <ul class="text-gray-300 space-y-2 text-sm">
+                <li><strong>→ Data Analytics:</strong> First insights within 7-10 days. Full optimization takes 4-12 weeks.</li>
+                <li><strong>→ Marketing Optimization:</strong> Initial findings in 2 weeks. Measurable improvement (15-30%) in 6-8 weeks</li>
+                <li><strong>→ Web Development:</strong> 2-6 weeks depending on complexity. Measurable leads within first month.</li>
+            </ul>
+            <p class="text-gray-400 text-sm mt-4">
+                Nothing happens overnight, but with focus, you'll see measurable improvement within 30 days.
+            </p>
+        </div>
+        
+        <!-- FAQ 3 -->
+        <div class="glass-morphism rounded-xl p-6 border-l-4 border-green-500">
+            <h3 class="font-bold mb-3 text-lg text-white">Do I need all three services?</h3>
+            <p class="text-gray-400">
+                Not necessarily. Most clients start with ONE service that addresses their biggest bottleneck. <strong>Once that's working, expanding to other services becomes obvious.</strong> For example: Fix your analytics first, then optimize marketing based on data, then build a sales funnel. In that order.
+            </p>
+        </div>
+        
+        <!-- FAQ 4 -->
+        <div class="glass-morphism rounded-xl p-6 border-l-4 border-yellow-500">
+            <h3 class="font-bold mb-3 text-lg text-white">What if I don't have a big budget?</h3>
+            <p class="text-gray-400 mb-4">
+                I work with businesses of all sizes. Here's my philosophy:
+            </p>
+            <ul class="text-gray-300 space-y-2 text-sm">
+                <li>✓ Start with what you can afford. I offer flexible pricing and payment plans.</li>
+                <li>✓ ROI first. If a project doesn't make financial sense, I'll tell you.</li>
+                <li>✓ Retainer options. Ongoing optimization is cheaper than sporadic projects.</li>
+            </ul>
+            <p class="text-gray-400 text-sm mt-4">
+                Let's talk specifics. I can show you what's possible at your budget level.
+            </p>
+        </div>
+        
+        <!-- FAQ 5 -->
+        <div class="glass-morphism rounded-xl p-6 border-l-4 border-red-500">
+            <h3 class="font-bold mb-3 text-lg text-white">Can you fix my existing project?</h3>
+            <p class="text-gray-400 mb-2">
+                Absolutely. Three common scenarios:
+            </p>
+            <ul class="text-gray-300 space-y-2 text-sm">
+                <li><strong>→ Analytics that don't work:</strong> I fix your tracking and build dashboards from existing data</li>
+                <li><strong>→ Website that doesn't convert:</strong> I audit, identify problems, and optimize for conversions</li>
+                <li><strong>→ Marketing campaigns with poor ROI:</strong> I analyze, identify what's broken, and fix it</li>
+            </ul>
+            <p class="text-gray-400 text-sm mt-4">
+                Most improvement comes from optimization, not building from scratch.
+            </p>
+        </div>
+        
+        <!-- FAQ 6 -->
+        <div class="glass-morphism rounded-xl p-6 border-l-4 border-pink-500">
+            <h3 class="font-bold mb-3 text-lg text-white">How do I know this will actually work?</h3>
+            <p class="text-gray-400 mb-2">
+                Fair question. Here's my track record:
+            </p>
+            <ul class="text-gray-300 space-y-2 text-sm">
+                <li>✓ 20+ completed projects across multiple industries</li>
+                <li>✓ Typical results: 20-40% improvement in efficiency or revenue</li>
+                <li>✓ I work with results-focused clients. If you're serious about growth, we'll see it.</li>
+            </ul>
+            <p class="text-gray-400 text-sm mt-4">
+                But here's the real answer: <strong>Schedule a free 20-min call.</strong> I'll analyze your situation and show you exactly what's possible.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="max-w-6xl mx-auto px-4 py-20\">
+    <div class="glass-morphism rounded-2xl p-12 text-center border-2 border-blue-500 bg-gradient-to-r from-blue-500/5 to-purple-500/5">
+        <h2 class="text-4xl font-bold mb-4\">Stop Guessing. Start Growing.</h2>
+        <p class=\"text-xl text-gray-300 mb-4\">
+            <strong>Book a free 20-minute strategy call.</strong>
+        </p>
+        <p class=\"text-lg text-gray-400 mb-8 max-w-2xl mx-auto\">
+            I'll analyze your specific situation, show you exactly where revenue is being wasted, and recommend the ONE thing you should focus on first to get the biggest improvement.
+        </p>
+        
+        <div class=\"flex flex-col md:flex-row gap-4 justify-center mb-6\">
+            <a href=\"https://calendly.com/ramkumar\" target=\"_blank\" class=\"btn-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:scale-105 transition\">
+                Schedule Free Call (20 mins)
+            </a>
+            <a href=\"https://wa.me/919876543210\" target=\"_blank\" class=\"glass-morphism text-white px-8 py-4 rounded-lg font-semibold text-lg border border-blue-500 hover:bg-blue-500/10\">
+                💬 Message on WhatsApp
+            </a>
+        </div>
+        
+        <p class=\"text-gray-500 text-sm\">
+            🎯 No charge. No sales pitch. Just honest advice based on your numbers.<br>
+            ⏱️ 20 minutes. Actionable insights. Next steps if you want them.
+        </p>
+    </div>
+</section>
+
+{% endblock %}

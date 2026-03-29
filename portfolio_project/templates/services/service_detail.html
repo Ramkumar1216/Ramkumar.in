@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block title %}{{ service.title }} - Ramkumar's Portfolio{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="max-w-6xl mx-auto px-4 py-20">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                <span class="gradient-bg bg-clip-text text-transparent">{{ service.title }}</span>
+            </h1>
+            
+            <p class="text-xl text-gray-400 mb-8 leading-relaxed">
+                {{ service.description }}
+            </p>
+            
+            <div class="flex gap-4">
+                <a href="{% url 'contact:contact' %}" class="btn-primary text-white px-8 py-4 rounded-lg font-bold text-lg hover:scale-105 transition">
+                    Schedule Free Call
+                </a>
+                <a href="https://wa.me/916303358867?text=Hi%20Ramkumar%2C%20I%20want%20to%20discuss%20{{ service.title }}" target="_blank" class="border-2 border-green-500 text-green-400 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-500/10 transition">
+                    WhatsApp Me
+                </a>
+            </div>
+        </div>
+        
+        <div class="glass-morphism rounded-2xl p-12 card-hover">
+            {% if service.image %}
+            <img src="{{ service.image.url }}" alt="{{ service.title }}" class="w-full h-64 object-cover rounded-xl mb-8 shadow-lg">
+            {% endif %}
+            <h3 class="text-2xl font-bold mb-8">What's Included</h3>
+            <div class="space-y-4">
+                {% for feature in service.get_features_list %}
+                <div class="flex gap-4 items-start">
+                    <span class="text-blue-400 font-bold text-xl flex-shrink-0">✓</span>
+                    <div>
+                        <p class="text-white font-semibold">{{ feature }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why This Service Section -->
+<section class="max-w-6xl mx-auto px-4 py-20 border-t border-gray-700">
+    <h2 class="text-4xl font-bold mb-12 text-center">Why Choose This Service?</h2>
+    
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="glass-morphism rounded-xl p-8 card-hover border-t-2 border-blue-500">
+            <div class="text-4xl mb-4">🎯</div>
+            <h3 class="text-xl font-bold mb-3">Results-Focused</h3>
+            <p class="text-gray-400">Every recommendation is backed by data. We measure success by your business growth, not our effort.</p>
+        </div>
+        
+        <div class="glass-morphism rounded-xl p-8 card-hover border-t-2 border-purple-500">
+            <div class="text-4xl mb-4">📊</div>
+            <h3 class="text-xl font-bold mb-3">Data-Driven</h3>
+            <p class="text-gray-400">Decisions backed by actual numbers. No guessing, no assumptions—just clear insights from your data.</p>
+        </div>
+        
+        <div class="glass-morphism rounded-xl p-8 card-hover border-t-2 border-green-500">
+            <div class="text-4xl mb-4">💼</div>
+            <h3 class="text-xl font-bold mb-3">Professional Support</h3>
+            <p class="text-gray-400">Direct access to me during the entire engagement. Questions answered quickly, progress tracked transparently.</p>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="max-w-6xl mx-auto px-4 py-20 border-t border-gray-700">
+    <h2 class="text-4xl font-bold mb-12 text-center">How This Service Works</h2>
+    
+    <div class="space-y-8 max-w-4xl mx-auto">
+        <!-- Step 1 -->
+        <div class="glass-morphism rounded-xl p-8 border-l-4 border-blue-500">
+            <div class="flex items-start gap-6">
+                <div class="flex-shrink-0">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white font-bold">1</div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Discovery Call (20 mins)</h3>
+                    <p class="text-gray-400">
+                        We discuss your current situation, goals, and challenges. I'll ask the right questions to understand what success looks like for you.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="glass-morphism rounded-xl p-8 border-l-4 border-purple-500">
+            <div class="flex items-start gap-6">
+                <div class="flex-shrink-0">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-500 text-white font-bold">2</div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Analysis & Strategy</h3>
+                    <p class="text-gray-400">
+                        I dive deep into your current data and situation. I develop a detailed action plan focused on your specific goals and ROI.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 3 -->
+        <div class="glass-morphism rounded-xl p-8 border-l-4 border-green-500">
+            <div class="flex items-start gap-6">
+                <div class="flex-shrink-0">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white font-bold">3</div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Execution & Implementation</h3>
+                    <p class="text-gray-400">
+                        I deliver high-quality work with weekly updates. You always know exactly what's happening, progress made, and next steps.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 4 -->
+        <div class="glass-morphism rounded-xl p-8 border-l-4 border-yellow-500">
+            <div class="flex items-start gap-6">
+                <div class="flex-shrink-0">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white font-bold">4</div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Results & Continued Support</h3>
+                    <p class="text-gray-400">
+                        You get the deliverables you need. Plus, I'm available for follow-up questions and strategic guidance as you grow.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Other Services Section -->
+<section class="max-w-6xl mx-auto px-4 py-20 border-t border-gray-700">
+    <h2 class="text-4xl font-bold mb-12 text-center">Other Services I Offer</h2>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+        {% for other_service in all_services %}
+        <div class="glass-morphism rounded-2xl p-8 card-hover">
+            <div class="flex items-start justify-between mb-4">
+                <div class="text-5xl">{{ other_service.icon }}</div>
+                <a href="{% url 'services:detail' slug=other_service.slug %}" class="text-blue-400 hover:text-blue-300 transition">
+                    Explore →
+                </a>
+            </div>
+            
+            <h3 class="text-2xl font-bold mb-3">{{ other_service.title }}</h3>
+            <p class="text-gray-400 mb-6">{{ other_service.description }}</p>
+            
+            <p class="text-2xl font-bold gradient-bg bg-clip-text text-transparent mb-4">{{ other_service.price }}</p>
+            
+            <a href="{% url 'services:detail' slug=other_service.slug %}" class="inline-block mt-4 btn-primary text-white px-6 py-2 rounded-lg font-semibold hover:scale-105 transition">
+                Learn More
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="max-w-6xl mx-auto px-4 py-20 border-t border-gray-700">
+    <h2 class="text-4xl font-bold mb-12 text-center">Frequently Asked Questions</h2>
+    
+    <div class="space-y-6 max-w-3xl mx-auto">
+        <!-- FAQ Item 1 -->
+        <div class="glass-morphism rounded-xl p-8 border-l-4 border-blue-500">
+            <h3 class="text-lg font-bold mb-3">How long does this service typically take?</h3>
+            <p class="text-gray-400">
+                It varies based on your specific situation. Most projects are completed within 2-8 weeks, depending on scope and data availability. We'll provide a clear timeline during our initial call.
+            </p>
+        </div>
+        
+        <!-- FAQ Item 2 -->
+        <div class="glass-morphism rounded-xl p-8 border-l-4 border-purple-500">
+            <h3 class="text-lg font-bold mb-3">What if I'm not ready to commit yet?</h3>
+            <p class="text-gray-400">
+                Start with a free 20-minute strategy call. I'll share initial insights and show you exactly what's possible. No commitment required—just honest advice about your situation.
+            </p>
+        </div>
+        
+        <!-- FAQ Item 3 -->
+        <div class="glass-morphism rounded-xl p-8 border-l-4 border-green-500">
+            <h3 class="text-lg font-bold mb-3">What support do I get during the project?</h3>
+            <p class="text-gray-400">
+                Full support. Weekly updates, direct access to me for questions, and iterative refinement until you're confident in the results. This isn't a "here's your report" situation—we work together.
+            </p>
+        </div>
+        
+        <!-- FAQ Item 4 -->
+        <div class="glass-morphism rounded-xl p-8 border-l-4 border-yellow-500">
+            <h3 class="text-lg font-bold mb-3">Can you work with my existing team?</h3>
+            <p class="text-gray-400">
+                Absolutely. I can train your team, collaborate with your existing developers/analysts, or handle everything myself. We'll figure out the best approach during our first call.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA Section -->
+<section class="max-w-6xl mx-auto px-4 py-20">
+    <div class="glass-morphism rounded-2xl p-12 text-center border-2 border-blue-500/30">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
+        
+        <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+            Let's discuss how {{ service.title }} can help your business grow. Schedule a free strategy call today.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <a href="{% url 'contact:contact' %}" class="btn-primary text-white px-10 py-4 rounded-lg font-bold text-lg hover:scale-105 transition">
+                Schedule Your Free Call
+            </a>
+            <a href="https://wa.me/919876543210?text=Hi%20Ramkumar%2C%20I%20want%20to%20know%20more%20about%20{{ service.title }}" target="_blank" class="border-2 border-green-500 text-green-400 px-10 py-4 rounded-lg font-bold text-lg hover:bg-green-500/10 transition">
+                Message on WhatsApp
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

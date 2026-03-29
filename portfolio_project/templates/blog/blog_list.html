@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Blog - Ramkumar's Portfolio{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="max-w-6xl mx-auto px-4 py-20">
+    <h1 class="text-5xl font-bold mb-4">Blog & Insights</h1>
+    <p class="text-xl text-gray-400">Thoughts on data analytics, web development, and digital growth</p>
+</section>
+
+<!-- Blog Posts Grid -->
+<section class="max-w-6xl mx-auto px-4 py-12">
+    {% if posts %}
+    <div class="grid md:grid-cols-3 gap-8">
+        {% for post in posts %}
+        <a href="{% url 'blog:detail' post.slug %}" class="glass-morphism rounded-xl overflow-hidden card-hover group block">
+            <!-- Post Image -->
+            {% if post.image %}
+            <div class="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 overflow-hidden">
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+            </div>
+            {% endif %}
+            
+            <!-- Post Content -->
+            <div class="p-6">
+                <p class="text-blue-400 text-sm font-semibold mb-2">{{ post.created_at|date:"M d, Y" }}</p>
+                <h3 class="text-2xl font-bold mb-3 group-hover:text-blue-400 transition-colors">{{ post.title }}</h3>
+                <p class="text-gray-400 mb-4">{{ post.excerpt }}</p>
+                <div class="text-blue-400 font-semibold group-hover:underline">
+                    Read More →
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-20">
+        <p class="text-xl text-gray-400">Blog posts coming soon! Subscribe to stay updated.</p>
+    </div>
+    {% endif %}
+</section>
+
+<!-- Newsletter Section -->
+<section class="max-w-6xl mx-auto px-4 py-20">
+    <div class="glass-morphism rounded-2xl p-12 text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
+        <p class="text-gray-400 mb-8">Get weekly insights on data analytics, web development, and digital growth strategies</p>
+        <form class="flex flex-col md:flex-row gap-4">
+            <input type="email" placeholder="Enter your email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded focus:outline-none focus:border-blue-500">
+            <button type="submit" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold whitespace-nowrap">
+                Subscribe
+            </button>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

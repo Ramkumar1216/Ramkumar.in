@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }} - Project Details{% endblock %}
+
+{% block content %}
+<!-- Back Link -->
+<div class="max-w-6xl mx-auto px-4 py-6">
+    <a href="{% url 'projects:list' %}" class="text-blue-400 hover:underline">← Back to Projects</a>
+</div>
+
+<!-- Hero Section with Project Image -->
+<section class="max-w-6xl mx-auto px-4 py-12">
+    <h1 class="text-5xl font-bold mb-6">{{ project.title }}</h1>
+    
+    <div class="glass-morphism rounded-2xl overflow-hidden mb-12">
+        {% if project.image %}
+            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-96 object-cover">
+        {% else %}
+            <div class="w-full h-96 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                <div class="text-8xl">📊</div>
+            </div>
+        {% endif %}
+    </div>
+    
+    <!-- Project Meta -->
+    <div class="grid md:grid-cols-4 gap-6 mb-12">
+        <div class="glass-morphism rounded-xl p-6">
+            <p class="text-gray-400 text-sm mb-2">Project Date</p>
+            <p class="font-bold">{{ project.created_at|date:"F Y" }}</p>
+        </div>
+        
+        <div class="glass-morphism rounded-xl p-6">
+            <p class="text-gray-400 text-sm mb-2">Status</p>
+            <p class="font-bold text-green-400">Completed</p>
+        </div>
+        
+        <div class="glass-morphism rounded-xl p-6">
+            <p class="text-gray-400 text-sm mb-2">Category</p>
+            <p class="font-bold">Featured Project</p>
+        </div>
+        
+        <div class="glass-morphism rounded-xl p-6">
+            {% if project.link %}
+            <p class="text-gray-400 text-sm mb-2">Live Demo</p>
+            <a href="{{ project.link }}" target="_blank" class="font-bold text-blue-400 hover:underline">Visit Site →</a>
+            {% else %}
+            <p class="text-gray-400 text-sm mb-2">External Link</p>
+            <p class="font-bold">On Request</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Project Details -->
+<section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid md:grid-cols-3 gap-8">
+        <div class="md:col-span-2">
+            <!-- Problem Statement -->
+            {% if project.problem_statement %}
+            <div class="glass-morphism rounded-xl p-8 mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-blue-400">🎯 Problem Statement</h2>
+                <p class="text-gray-300 leading-relaxed">{{ project.problem_statement }}</p>
+            </div>
+            {% endif %}
+            
+            <!-- Solution and Approach -->
+            <div class="glass-morphism rounded-xl p-8 mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-purple-400">💡 Solution Approach</h2>
+                <p class="text-gray-300 leading-relaxed">{{ project.description }}</p>
+            </div>
+            
+            <!-- Key Insights -->
+            {% if project.key_insights %}
+            <div class="glass-morphism rounded-xl p-8 mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-green-400">🔍 Key Insights</h2>
+                <p class="text-gray-300 leading-relaxed">{{ project.key_insights }}</p>
+            </div>
+            {% endif %}
+            
+            <!-- Business Results -->
+            {% if project.business_result %}
+            <div class="glass-morphism rounded-xl p-8 mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-orange-400">📈 Business Results</h2>
+                <p class="text-gray-300 leading-relaxed">{{ project.business_result }}</p>
+            </div>
+            {% endif %}
+        </div>
+        
+        <!-- Sidebar -->
+        <div>
+            <!-- Tools Used -->
+            <div class="glass-morphism rounded-xl p-8 mb-8 sticky top-24">
+                <h3 class="text-xl font-bold mb-4">🛠️ Tools & Technologies</h3>
+                <div class="space-y-2 mb-6">
+                    {% for tool in project.get_tools_list %}
+                    <div class="flex items-center">
+                        <span class="text-blue-400 mr-2">✓</span>
+                        <span class="text-gray-300">{{ tool }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- Dataset Info -->
+            {% if project.dataset_used %}
+            <div class="glass-morphism rounded-xl p-8 mb-8">
+                <h3 class="text-xl font-bold mb-4">📦 Dataset Used</h3>
+                <p class="text-gray-300 text-sm">{{ project.dataset_used }}</p>
+            </div>
+            {% endif %}
+            
+            <!-- CTA Button -->
+            <a href="https://wa.me/919876543210" target="_blank" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold w-full text-center block mb-4">
+                Similar Project Needed?
+            </a>
+            <a href="{% url 'contact:contact' %}" class="glass-morphism text-white px-6 py-3 rounded-lg font-semibold w-full text-center block">
+                Get in Touch
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Related Projects -->
+{% if related_projects %}
+<section class="max-w-6xl mx-auto px-4 py-20">
+    <h2 class="text-3xl font-bold mb-12">Related Projects</h2>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+        {% for related in related_projects %}
+        <a href="{% url 'projects:detail' related.slug %}" class="glass-morphism rounded-xl overflow-hidden card-hover group">
+            <div class="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 overflow-hidden">
+                {% if related.image %}
+                    <img src="{{ related.image.url }}" alt="{{ related.title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                {% else %}
+                    <div class="w-full h-full flex items-center justify-center">
+                        <div class="text-6xl">📊</div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">{{ related.title }}</h3>
+                <p class="text-gray-400 text-sm">{{ related.description|truncatewords:15 }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

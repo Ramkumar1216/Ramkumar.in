@@ -1,0 +1,490 @@
+{% extends "base.html" %}
+
+{% block title %}About - Ramkumar P | Data Analytics Specialist{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="max-w-6xl mx-auto px-4 py-20">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                <span class="gradient-bg bg-clip-text text-transparent">
+                    Stop Drowning in Data. Start Making Money From It.
+                </span>
+            </h1>
+            
+            <p class="text-xl text-gray-400 mb-6 leading-relaxed">
+                Most businesses stare at spreadsheets and dashboards that make no sense. Data sits there. Unused. While you leave 20-40% of potential revenue on the table.
+            </p>
+            
+            <p class="text-gray-300 leading-relaxed mb-8 text-lg">
+                I'm Ramkumar. For the past 20+ projects, I've helped small business owners and eCommerce sellers do ONE thing: turn messy data into clear decisions that grow revenue.
+            </p>
+            
+            <p class="text-gray-300 leading-relaxed mb-8">
+                I don't deliver reports that sit on a shelf. I identify exactly what's broken, fix it, and show you how to capture the revenue you're already leaving on the table.
+            </p>
+            
+            <div class="flex gap-4">
+                <a href="{% url 'contact:contact' %}" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold hover:scale-105 transition">
+                    Schedule Free Strategy Call
+                </a>
+                <a href="#projects" class="border border-blue-500 text-blue-400 px-8 py-3 rounded-lg font-semibold hover:bg-blue-500/10">
+                    See How I've Helped Others
+                </a>
+            </div>
+        </div>
+        
+        <div class="glass-morphism rounded-xl p-8 card-hover">
+            {% if profile_photo_url %}
+            <img src="/media/profile/profile.jpeg" alt="Ramkumar P - Data Analytics Specialist" class="w-full rounded-lg mb-6 object-cover h-80 shadow-lg">
+            {% else %}
+            <div class="w-full h-80 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg mb-6 flex items-center justify-center">
+                <span class="text-6xl">📊</span>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- The Problem Section -->
+<section class="max-w-6xl mx-auto px-4 py-20 border-t border-gray-700">
+    <div class="max-w-3xl mx-auto">
+        <h2 class="text-4xl font-bold mb-8 text-center">Does This Sound Familiar?</h2>
+        
+        <div class="space-y-4 mb-12">
+            <div class="flex gap-4 items-start">
+                <span class="text-2xl text-red-500">✗</span>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-200">Your data is spread across 5 different systems</h3>
+                    <p class="text-gray-400 text-sm mt-1">You have spreadsheets, CRM data, sales databases... nothing talks to each other.</p>
+                </div>
+            </div>
+            
+            <div class="flex gap-4 items-start">
+                <span class="text-2xl text-red-500">✗</span>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-200">Dashboards exist but no one understands them</h3>
+                    <p class="text-gray-400 text-sm mt-1">They're too complex, too generic, or they don't answer the actual questions you need answered.</p>
+                </div>
+            </div>
+            
+            <div class="flex gap-4 items-start">
+                <span class="text-2xl text-red-500">✗</span>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-200">You make business decisions based on intuition, not data</h3>
+                    <p class="text-gray-400 text-sm mt-1">"We think this will work" instead of "We know this will work because the data shows it."</p>
+                </div>
+            </div>
+            
+            <div class="flex gap-4 items-start">
+                <span class="text-2xl text-red-500">✗</span>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-200">You're losing money and you don't even know where</h3>
+                    <p class="text-gray-400 text-sm mt-1">20-40% of potential revenue is leaving your business. And until you see the data, you can't fix it.</p>
+                </div>
+            </div>
+        </div>
+        
+        <p class="text-center text-gray-300 text-lg border-t border-b border-gray-700 py-6">
+            <strong>Most analytics freelancers will deliver a report and disappear.</strong><br>
+            <span class="text-gray-400">I do the opposite. I show you what matters, explain why it matters, and give you exactly what to do next.</span>
+        </p>
+    </div>
+</section>
+
+<!-- What I Do Section -->
+<section class="max-w-6xl mx-auto px-4 py-20">
+    <h2 class="text-4xl font-bold mb-12 text-center">How I Help You Grow</h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Service 1 -->
+        <div class="glass-morphism rounded-xl p-8 card-hover border-t-2 border-blue-500">
+            <div class="text-4xl mb-4">📊</div>
+            <h3 class="text-xl font-bold mb-3">Revenue Opportunity Analysis</h3>
+            <p class="text-gray-400 mb-4">
+                I identify the 20-40% of revenue you're leaving on the table. Where is money walking out the door? We find it, quantify it, and fix it.
+            </p>
+            <p class="text-sm text-blue-400">→ Typical result: ₹50K-₹500K identified in first 30 days</p>
+        </div>
+        
+        <!-- Service 2 -->
+        <div class="glass-morphism rounded-xl p-8 card-hover border-t-2 border-purple-500">
+            <div class="text-4xl mb-4">👥</div>
+            <h3 class="text-xl font-bold mb-3">Customer Intelligence</h3>
+            <p class="text-gray-400 mb-4">
+                I show you WHO your most profitable customers are, WHEN they buy, and WHAT they buy. Then we build marketing around that.
+            </p>
+            <p class="text-sm text-purple-400">→ Typical result: 25-50% better targeting, lower CAC</p>
+        </div>
+        
+        <!-- Service 3 -->
+        <div class="glass-morphism rounded-xl p-8 card-hover border-t-2 border-green-500">
+            <div class="text-4xl mb-4">📈</div>
+            <h3 class="text-xl font-bold mb-3">Decision Dashboards That Actually Work</h3>
+            <p class="text-gray-400 mb-4">
+                Not pretty dashboards. USEFUL dashboards. Built specifically to answer YOUR questions. You'll check them every morning.
+            </p>
+            <p class="text-sm text-green-400">→ Typical result: Real-time business visibility in 30 days</p>
+        </div>
+        
+        <!-- Service 4 -->
+        <div class="glass-morphism rounded-xl p-8 card-hover border-t-2 border-yellow-500">
+            <div class="text-4xl mb-4">⚙️</div>
+            <h3 class="text-xl font-bold mb-3">Data Infrastructure That Scales</h3>
+            <p class="text-gray-400 mb-4">
+                Messy data = messy decisions. I clean, organize, and structure your data so it's reliable, accurate, and ready for growth.
+            </p>
+            <p class="text-sm text-yellow-400">→ Typical result: 40% faster analysis, 100% confidence in data</p>
+        </div>
+        
+        <!-- Service 5 -->
+        <div class="glass-morphism rounded-xl p-8 card-hover border-t-2 border-red-500">
+            <div class="text-4xl mb-4">🎯</div>
+            <h3 class="text-xl font-bold mb-3">Operational Optimization</h3>
+            <p class="text-gray-400 mb-4">
+                I identify bottlenecks, inefficiencies, and broken processes that waste your time and money. Then we fix them with data.
+            </p>
+            <p class="text-sm text-red-400">→ Typical result: 20-35% efficiency gains within 60 days</p>
+        </div>
+        
+        <!-- Service 6 -->
+        <div class="glass-morphism rounded-xl p-8 card-hover border-t-2 border-pink-500">
+            <div class="text-4xl mb-4">💡</div>
+            <h3 class="text-xl font-bold mb-3">Actionable Recommendations</h3>
+            <p class="text-gray-400 mb-4">
+                No vague insights. No 50-page PDF that no one reads. Clear, specific recommendations your team can implement IMMEDIATELY.
+            </p>
+            <p class="text-sm text-pink-400">→ Typical result: ROI within 3-6 months</p>
+        </div>
+    </div>
+</section>
+
+<!-- My Process Section -->
+<section class="max-w-6xl mx-auto px-4 py-20">
+    <h2 class="text-4xl font-bold mb-12 text-center">The Process (Without the Complexity)</h2>
+    
+    <div class="space-y-6 max-w-4xl mx-auto">
+        <!-- Step 1 -->
+        <div class="glass-morphism rounded-xl p-8 border-l-4 border-blue-500">
+            <div class="flex items-start gap-6">
+                <div class="flex-shrink-0">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white font-bold text-lg">1</div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Strategic Discovery (Not Just Questions)</h3>
+                    <p class="text-gray-400">
+                        I don't just ask "what's your goal?" I ask the hard questions: Where are you losing money? What worries you most about your data? What would change if you knew the truth?
+                    </p>
+                    <p class="text-sm text-blue-300 mt-3">📌 Expected outcome: 3 key areas of opportunity identified</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="glass-morphism rounded-xl p-8 border-l-4 border-purple-500">
+            <div class="flex items-start gap-6">
+                <div class="flex-shrink-0">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-purple-500 text-white font-bold text-lg">2</div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Data Audit & Integration</h3>
+                    <p class="text-gray-400">
+                        I pull your data from everywhere, clean it, validate it, and build a single source of truth. This is where most freelancers fail—I make it bulletproof.
+                    </p>
+                    <p class="text-sm text-purple-300 mt-3">📌 Expected outcome: Clean, unified database in 2 weeks</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 3 -->
+        <div class="glass-morphism rounded-xl p-8 border-l-4 border-green-500">
+            <div class="flex items-start gap-6">
+                <div class="flex-shrink-0">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white font-bold text-lg">3</div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Deep Analysis & Insight Discovery</h3>
+                    <p class="text-gray-400">
+                        Now the real work. I analyze patterns, correlations, and trends. I find the hidden insights that most people miss. The things that move the needle.
+                    </p>
+                    <p class="text-sm text-green-300 mt-3">📌 Expected outcome: 5-10 actionable insights documented</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 4 -->
+        <div class="glass-morphism rounded-xl p-8 border-l-4 border-yellow-500">
+            <div class="flex items-start gap-6">
+                <div class="flex-shrink-0">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white font-bold text-lg">4</div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Actionable Dashboard & Recommendations</h3>
+                    <p class="text-gray-400">
+                        You get a custom dashboard built for YOUR questions (not generic), plus a 1-page summary of what to do, when, and why. Real recommendations, real results.
+                    </p>
+                    <p class="text-sm text-yellow-300 mt-3">📌 Expected outcome: Dashboard + 3-5 specific action items with metrics</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 5 -->
+        <div class="glass-morphism rounded-xl p-8 border-l-4 border-red-500">
+            <div class="flex items-start gap-6">
+                <div class="flex-shrink-0">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white font-bold text-lg">5</div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Support & Iteration</h3>
+                    <p class="text-gray-400">
+                        Questions about the findings? Conflicting interpretations? I'm here. We iterate until you're confident in the insights and have a clear game plan.
+                    </p>
+                    <p class="text-sm text-red-300 mt-3">📌 Expected outcome: Confidence + direction for the next 90 days</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="max-w-6xl mx-auto px-4 py-20 border-t border-gray-700">
+    <h2 class="text-4xl font-bold mb-12 text-center">Real Results From Real Clients</h2>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+        <!-- Project 1 -->
+        <div class="glass-morphism rounded-xl p-8 card-hover border-t-2 border-blue-500">
+            <div class="mb-4">
+                <span class="inline-block bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm font-semibold">
+                    Revenue Growth
+                </span>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">₹75K Hidden Revenue Identified & Captured</h3>
+            <p class="text-sm text-gray-300 mb-4"><strong>The Problem:</strong> eCommerce client didn't know which products were actually profitable.</p>
+            <p class="text-gray-400 mb-4">
+                I analyzed 2+ years of sales data, identified the 20% of products generating 80% of profit, and showed them exactly what to stop selling and what to scale. Within 2 months, margin increased by 15%.
+            </p>
+            <div class="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 mt-4">
+                <p class="text-sm"><span class="text-blue-400 font-bold">💰 Impact:</span> ₹75K additional profit per month</p>
+                <p class="text-sm text-gray-400 mt-2">Tools: Power BI, SQL, Python</p>
+            </div>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="glass-morphism rounded-xl p-8 card-hover border-t-2 border-purple-500">
+            <div class="mb-4">
+                <span class="inline-block bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-sm font-semibold">
+                    Customer Intelligence
+                </span>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">40% Improvement in Customer Targeting</h3>
+            <p class="text-sm text-gray-300 mb-4"><strong>The Problem:</strong> Marketing spend wasn't targeted. They were spending equally on all customers.</p>
+            <p class="text-gray-400 mb-4">
+                I segmented their 5,000+ customers into 5 distinct groups by profitability and behavior. They redeployed their marketing budget to high-value segments only. Result: 40% improvement in conversion rate within 60 days.
+            </p>
+            <div class="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4 mt-4">
+                <p class="text-sm"><span class="text-purple-400 font-bold">📈 Impact:</span> 25% reduction in CAC, 40% better targeting</p>
+                <p class="text-sm text-gray-400 mt-2">Tools: Python, Pandas, Excel</p>
+            </div>
+        </div>
+        
+        <!-- Project 3 -->
+        <div class="glass-morphism rounded-xl p-8 card-hover border-t-2 border-green-500">
+            <div class="mb-4">
+                <span class="inline-block bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm font-semibold">
+                    Automation
+                </span>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">90 Hours/Month Saved With Data Automation</h3>
+            <p class="text-sm text-gray-300 mb-4"><strong>The Problem:</strong> Team spent 2-3 hours daily pulling reports manually from 3 different systems.</p>
+            <p class="text-gray-400 mb-4">
+                I built an automated system that pulls, cleans, and consolidates data in real-time. What used to take 3 hours now takes 15 minutes. The team gets better data, and they have 90 hours back every month.
+            </p>
+            <div class="bg-green-500/10 border border-green-500/30 rounded-lg p-4 mt-4">
+                <p class="text-sm"><span class="text-green-400 font-bold">⏱️ Impact:</span> 90 hours/month saved, real-time data access</p>
+                <p class="text-sm text-gray-400 mt-2">Tools: Python, SQL, Automation Scripts</p>
+            </div>
+        </div>
+        
+        <!-- Project 4 -->
+        <div class="glass-morphism rounded-xl p-8 card-hover border-t-2 border-yellow-500">
+            <div class="mb-4">
+                <span class="inline-block bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-full text-sm font-semibold">
+                    Process Optimization
+                </span>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">30% Faster Decisions With Real-Time Dashboards</h3>
+            <p class="text-sm text-gray-300 mb-4"><strong>The Problem:</strong> Decisions took weeks. They had to wait for reports from multiple teams.</p>
+            <p class="text-gray-400 mb-4">
+                I built unified dashboards that show real-time data on inventory, sales, customer behavior, and finances. What used to require a 1-week analysis cycle now happens in real-time. Decisions that took months now take days.
+            </p>
+            <div class="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 mt-4">
+                <p class="text-sm"><span class="text-yellow-400 font-bold">⚡ Impact:</span> 30% faster decisions, 100% data confidence</p>
+                <p class="text-sm text-gray-400 mt-2">Tools: Power BI, Excel, SQL</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section class="max-w-6xl mx-auto px-4 py-20">
+    <h2 class="text-4xl font-bold mb-12 text-center">Skills & Tools</h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Core Skills -->
+        <div class="glass-morphism rounded-xl p-6">
+            <h3 class="text-xl font-bold mb-4 text-blue-400">Data Analytics</h3>
+            <ul class="space-y-2 text-gray-300 text-sm">
+                <li>✓ Data Analysis & Modeling</li>
+                <li>✓ Statistical Analysis</li>
+                <li>✓ Trend Identification</li>
+                <li>✓ Business Insights</li>
+                <li>✓ Report Writing</li>
+            </ul>
+        </div>
+        
+        <!-- Programming -->
+        <div class="glass-morphism rounded-xl p-6">
+            <h3 class="text-xl font-bold mb-4 text-purple-400">Programming</h3>
+            <ul class="space-y-2 text-gray-300 text-sm">
+                <li>✓ Python (Pandas, NumPy)</li>
+                <li>✓ SQL & Databases</li>
+                <li>✓ Excel (Advanced)</li>
+                <li>✓ Data Cleaning</li>
+                <li>✓ Scripting</li>
+            </ul>
+        </div>
+        
+        <!-- Visualization -->
+        <div class="glass-morphism rounded-xl p-6">
+            <h3 class="text-xl font-bold mb-4 text-green-400">Visualization</h3>
+            <ul class="space-y-2 text-gray-300 text-sm">
+                <li>✓ Power BI</li>
+                <li>✓ Tableau</li>
+                <li>✓ Excel Charts</li>
+                <li>✓ Matplotlib</li>
+                <li>✓ Dashboard Design</li>
+            </ul>
+        </div>
+        
+        <!-- Business -->
+        <div class="glass-morphism rounded-xl p-6">
+            <h3 class="text-xl font-bold mb-4 text-yellow-400">Business Skills</h3>
+            <ul class="space-y-2 text-gray-300 text-sm">
+                <li>✓ Problem Solving</li>
+                <li>✓ Data Interpretation</li>
+                <li>✓ Client Communication</li>
+                <li>✓ Presentation</li>
+                <li>✓ Project Management</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Me Section -->
+<section class="max-w-6xl mx-auto px-4 py-20 border-t border-gray-700">
+    <h2 class="text-4xl font-bold mb-12 text-center">Why These Clients Keep Coming Back</h2>
+    
+    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="flex gap-4 glass-morphism rounded-xl p-6 border-l-4 border-blue-500">
+            <div class="flex-shrink-0">
+                <div class="flex items-center justify-center h-10 w-10 rounded-lg bg-blue-500/30 text-blue-400 font-bold text-lg">✓</div>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-2">You Get Measurable Results, Not Promises</h3>
+                <p class="text-gray-400 text-sm">Every recommendation comes with metrics. Every project ends with before/after numbers. No fluff, no excuses, just results.</p>
+            </div>
+        </div>
+        
+        <div class="flex gap-4 glass-morphism rounded-xl p-6 border-l-4 border-purple-500">
+            <div class="flex-shrink-0">
+                <div class="flex items-center justify-center h-10 w-10 rounded-lg bg-purple-500/30 text-purple-400 font-bold text-lg">✓</div>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-2">I Explain Everything in Plain English</h3>
+                <p class="text-gray-400 text-sm">No jargon. No "analytics speak." I explain WHY each insight matters and WHAT to do about it. Your team will actually understand what's happening.</p>
+            </div>
+        </div>
+        
+        <div class="flex gap-4 glass-morphism rounded-xl p-6 border-l-4 border-green-500">
+            <div class="flex-shrink-0">
+                <div class="flex items-center justify-center h-10 w-10 rounded-lg bg-green-500/30 text-green-400 font-bold text-lg">✓</div>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-2">I Focus on Your Business, Not My Ego</h3>
+                <p class="text-gray-400 text-sm">I don't use fancy tools because they're flashy. I use what works for YOUR situation. If Excel solves it, we use Excel. If we need Python, we use Python.</p>
+            </div>
+        </div>
+        
+        <div class="flex gap-4 glass-morphism rounded-xl p-6 border-l-4 border-yellow-500">
+            <div class="flex-shrink-0">
+                <div class="flex items-center justify-center h-10 w-10 rounded-lg bg-yellow-500/30 text-yellow-400 font-bold text-lg">✓</div>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-2">You Get Hands-On Support, Not Ghosting</h3>
+                <p class="text-gray-400 text-sm">Questions on the findings? Confused about next steps? I'm here. I give you direct access to work through the analysis together.</p>
+            </div>
+        </div>
+        
+        <div class="flex gap-4 glass-morphism rounded-xl p-6 border-l-4 border-red-500">
+            <div class="flex-shrink-0">
+                <div class="flex items-center justify-center h-10 w-10 rounded-lg bg-red-500/30 text-red-400 font-bold text-lg">✓</div>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-2">I'm Actually Invested in Your Success</h3>
+                <p class="text-gray-400 text-sm">I only take projects where I can genuinely help. If the data won't reveal meaningful insights, I'll tell you upfront instead of wasting your money.</p>
+            </div>
+        </div>
+        
+        <div class="flex gap-4 glass-morphism rounded-xl p-6 border-l-4 border-pink-500">
+            <div class="flex-shrink-0">
+                <div class="flex items-center justify-center h-10 w-10 rounded-lg bg-pink-500/30 text-pink-400 font-bold text-lg">✓</div>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-2">You Get a Strategic Partner, Not Just a Vendor</h3>
+                <p class="text-gray-400 text-sm">After the project, you're not on your own. I'm available for follow-up questions, dashboard updates, and strategic guidance as you grow.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-12 max-w-2xl mx-auto glass-morphism rounded-xl p-8 border-l-4 border-blue-500 text-center">
+        <p class="text-gray-300 text-lg leading-relaxed">
+            <strong>Bottom line:</strong> I don't deliver reports. I deliver clarity.
+            <br><br>
+            When we're done, you'll know exactly what's working, what's broken, and what to do next.
+            More importantly, your whole team will be aligned and confident in the direction.
+        </p>
+    </div>
+</section>
+
+<!-- Final CTA Section -->
+<section class="max-w-6xl mx-auto px-4 py-20">
+    <div class="glass-morphism rounded-2xl p-12 text-center border-2 border-blue-500/30">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Stop Guessing. Start Getting Clarity.</h2>
+        
+        <p class="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+            Schedule a free 20-minute strategy call. I'll analyze your situation and show you exactly where the opportunity is (and whether we're a good fit).
+        </p>
+        
+        <p class="text-gray-300 mb-8">
+            <strong>No charge. No sales pitch. Just honest advice.</strong>
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <a href="{% url 'contact:contact' %}" class="btn-primary text-white px-10 py-4 rounded-lg font-bold text-lg hover:scale-105 transition">
+                Schedule Your Free Call
+            </a>
+            <a href="https://wa.me/919876543210?text=Hi%20Ramkumar%2C%20I%20want%20to%20discuss%20how%20you%20can%20help%20us%20grow%20with%20data" target="_blank" class="border-2 border-green-500 text-green-400 px-10 py-4 rounded-lg font-bold text-lg hover:bg-green-500/10 transition">
+                Message on WhatsApp
+            </a>
+        </div>
+        
+        <p class="text-gray-500 text-sm">
+            📍 Coimbatore, Tamil Nadu | 💼 Freelance & Retainer Projects
+            <br>
+            Available for eCommerce sellers, service businesses & SaaS companies
+        </p>
+    </div>
+</section>
+
+{% endblock %}
