@@ -30,5 +30,5 @@ RUN mkdir -p /app/media
 # Expose port
 EXPOSE 8000
 
-# Run gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "portfolio_project.wsgi:application"]
+# Run gunicorn on the runtime port
+CMD ["/bin/sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-8000} wsgi:application"]
